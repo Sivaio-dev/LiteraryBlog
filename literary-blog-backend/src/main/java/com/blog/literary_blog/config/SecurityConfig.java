@@ -41,9 +41,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:5500",
-                "http://127.0.0.1:5500",
-                "http://localhost:8080"   // optional for testing
+                "https://kesavthoughts.vercel.app/"
+                "http://localhost:5500",  // optional for testing
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
