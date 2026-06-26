@@ -1,0 +1,1028 @@
+/* ----- CSS Variables (Light Theme) ----- */
+:root {
+    --bg-body: #fdfaf7;
+    --bg-card: #ffffff;
+    --bg-header: #ffffff;
+    --bg-footer: #f8f4f0;
+    --bg-hero: #f5efe9;
+    --bg-toolbar: #f5efe9;
+    --bg-input: #fcfaf8;
+    --bg-table-stripe: #faf8f6;
+    --text-primary: #2d2d2d;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6a6a6a;
+    --border-color: #e8e0d8;
+    --border-light: #f0ebe5;
+    --link-color: #3d5a80;
+    --link-hover: #1f2e4a;
+    --shadow-color: rgba(0,0,0,0.04);
+    --shadow-hover: rgba(0,0,0,0.08);
+    --badge-bg: #d0c8be;
+    --badge-text: #2d2d2d;
+    --btn-primary-bg: #3d5a80;
+    --btn-primary-hover: #1f2e4a;
+    --btn-outline-color: #3d5a80;
+    --btn-outline-hover-bg: #3d5a80;
+    --btn-outline-hover-text: #fff;
+    --quill-border: #d8d0c8;
+    --quill-bg: #fff;
+    --quill-toolbar-bg: #f5efe9;
+    --hero-border-left: #3d5a80;
+    --blockquote-border: #3d5a80;
+}
+
+/* ----- Dark Theme Variables ----- */
+body.dark-mode {
+    --bg-body: #1a1a1a;
+    --bg-card: #2a2a2a;
+    --bg-header: #222222;
+    --bg-footer: #1e1e1e;
+    --bg-hero: #2a2a2a;
+    --bg-toolbar: #2a2a2a;
+    --bg-input: #333333;
+    --bg-table-stripe: #2a2a2a;
+    --text-primary: #e8e0d8;
+    --text-secondary: #c0b8b0;
+    --text-muted: #a0a0a0;
+    --border-color: #3a3a3a;
+    --border-light: #333333;
+    --link-color: #8aa9c9;
+    --link-hover: #b0cce0;
+    --shadow-color: rgba(0,0,0,0.2);
+    --shadow-hover: rgba(0,0,0,0.4);
+    --badge-bg: #4a4a4a;
+    --badge-text: #e8e0d8;
+    --btn-primary-bg: #5a7a9a;
+    --btn-primary-hover: #4a6a8a;
+    --btn-outline-color: #8aa9c9;
+    --btn-outline-hover-bg: #8aa9c9;
+    --btn-outline-hover-text: #1a1a1a;
+    --quill-border: #3a3a3a;
+    --quill-bg: #2a2a2a;
+    --quill-toolbar-bg: #333333;
+    --hero-border-left: #8aa9c9;
+    --blockquote-border: #8aa9c9;
+}
+
+/* Tamil font for articles/content */
+.tamil-text,
+article .tamil-content {
+    font-family: 'Noto Sans Tamil', 'Mukta', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: 'Merriweather', 'Georgia','Noto Sans Tamil', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+/* Use a consistent font hierarchy */
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.6rem; }
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Status dropdown (form-select) */
+body.dark-mode .form-select {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23c0b8b0' d='M1.5 4.5L8 11l6.5-6.5'/%3e%3c/svg%3e") !important;
+}
+body.dark-mode .form-select:focus {
+    border-color: var(--link-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(61, 90, 128, 0.15) !important;
+}
+
+/* File upload input */
+body.dark-mode .form-control[type="file"] {
+    background-color: var(--bg-input) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+body.dark-mode .form-control[type="file"]::file-selector-button {
+    background-color: var(--bg-toolbar) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+body.dark-mode .form-control[type="file"]::file-selector-button:hover {
+    background-color: var(--bg-table-stripe) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Ensure the "No file chosen" text is light in dark mode */
+body.dark-mode .form-control[type="file"]::-webkit-file-upload-button {
+    background-color: var(--bg-toolbar) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+body.dark-mode .form-control[type="file"]::-webkit-file-upload-button:hover {
+    background-color: var(--bg-table-stripe) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Ensure all table rows have visible text in dark mode */
+body.dark-mode .table tbody tr {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--bg-table-stripe) !important;
+}
+body.dark-mode .table-striped tbody tr:nth-of-type(even) {
+    background-color: var(--bg-card) !important;
+}
+body.dark-mode .table tbody td {
+    color: var(--text-primary) !important;
+}
+body.dark-mode .table tbody tr:hover {
+    background-color: var(--bg-table-stripe) !important;
+}
+
+/* Password toggle button */
+#togglePasswordBtn {
+    border-left: none;
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+#togglePasswordBtn:hover {
+    background-color: var(--bg-table-stripe);
+    color: var(--link-color);
+}
+body.dark-mode #togglePasswordBtn {
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+body.dark-mode #togglePasswordBtn:hover {
+    background-color: var(--bg-table-stripe);
+    color: var(--link-color);
+}
+
+.navbar {
+    background-color: var(--bg-header) !important;
+    border-bottom: 2px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.02em;
+}
+.navbar-brand:hover {
+    color: var(--link-color) !important;
+    text-decoration: none;
+}
+.nav-link {
+    font-family: 'Merriweather', serif;
+    font-size: 0.95rem;
+    color: var(--text-secondary) !important;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.2s;
+}
+.nav-link:hover {
+    color: var(--link-color) !important;
+}
+.nav-link.active {
+    color: var(--link-color) !important;
+    border-bottom: 2px solid var(--link-color);
+}
+
+/* Navbar toggler icon in dark mode */
+.navbar-toggler {
+    border-color: var(--border-color) !important;
+}
+.navbar-toggler-icon {
+    filter: var(--toggler-icon-filter, none);
+}
+body.dark-mode .navbar-toggler-icon {
+    --toggler-icon-filter: invert(1);
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+}
+.theme-toggle:hover {
+    color: var(--link-color);
+}
+
+/* ----- Buttons ----- */
+.btn {
+    font-family: 'Merriweather', serif;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s;
+}
+.btn-primary {
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover);
+    border-color: var(--btn-primary-hover);
+    color: #fff;
+}
+.btn-outline-primary {
+    color: var(--btn-outline-color);
+    border-color: var(--btn-outline-color);
+}
+.btn-outline-primary:hover {
+    background-color: var(--btn-outline-hover-bg);
+    border-color: var(--btn-outline-hover-bg);
+    color: var(--btn-outline-hover-text);
+}
+.btn-outline-success {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+.btn-outline-success:hover {
+    background-color: var(--text-secondary);
+    border-color: var(--text-secondary);
+    color: var(--bg-body);
+}
+.btn-outline-danger {
+    color: #b03e5e;
+    border-color: #b03e5e;
+}
+.btn-outline-danger:hover {
+    background-color: #b03e5e;
+    border-color: #b03e5e;
+    color: #fff;
+}
+
+/* ----- Cards ----- */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: box-shadow 0.25s ease, background-color 0.3s;
+}
+.card:hover {
+    box-shadow: 0 4px 16px var(--shadow-hover);
+}
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+}
+
+/* ----- Hero ----- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    /* border-left: 6px solid var(--hero-border-left); */
+    background: url('/assets/images/cover.jpg') no-repeat center center / cover;
+    background-position: 68% center;
+    transition: border-color 0.3s;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ----- Blog Detail ----- */
+article h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+article .text-muted {
+    color: var(--text-muted) !important;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+article img {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+}
+article blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--blockquote-border);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+}
+
+/* Regular page links */
+.page-link {
+    background-color: var(--bg-card) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+    transition: background-color 0.2s, color 0.2s;
+}
+.page-link:hover {
+    background-color: var(--bg-table-stripe) !important;
+    color: var(--link-color) !important;
+}
+
+/* Active page */
+.page-item.active .page-link {
+    background-color: var(--link-color) !important;
+    border-color: var(--link-color) !important;
+    color: #ffffff !important;
+}
+
+/* Disabled buttons (Previous/Next when at edges) */
+.page-item.disabled .page-link {
+    background-color: var(--bg-table-stripe) !important;
+    color: var(--text-muted) !important;
+    border-color: var(--border-color) !important;
+    opacity: 0.6;
+}
+
+/* Pagination container (optional) */
+.pagination {
+    gap: 0.25rem;
+}
+
+/* ----- Badges ----- */
+.badge {
+    background-color: var(--badge-bg) !important;
+    color: var(--badge-text) !important;
+    font-weight: 500;
+    padding: 0.4rem 0.7rem;
+    border-radius: 2rem;
+}
+.badge.bg-info {
+    background-color: var(--badge-bg) !important;
+    color: var(--badge-text);
+    font-weight: 400;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+}
+.badge.bg-secondary {
+    background-color: var(--badge-bg) !important;
+    color: var(--badge-text);
+}
+
+/* ----- Admin Tables ----- */
+.table {
+    font-size: 0.95rem;
+    color: var(--text-primary) !;
+    background-color: var(--bg-card) !important;
+}
+.table th {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+.table td {
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--bg-table-stripe);
+}
+
+/* ----- Quill Editor ----- */
+#editor .ql-container {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    min-height: 200px;
+    background: var(--quill-bg);
+    border: 1px solid var(--quill-border);
+    border-top: none;
+    color: var(--text-primary);
+}
+#editor .ql-editor {
+    padding: 1rem;
+}
+#editor .ql-toolbar {
+    background: var(--quill-toolbar-bg);
+    border: 1px solid var(--quill-border);
+    border-bottom: none;
+}
+#editor .ql-toolbar .ql-stroke {
+    stroke: var(--text-secondary);
+}
+#editor .ql-toolbar .ql-fill {
+    fill: var(--text-secondary);
+}
+#editor .ql-toolbar .ql-picker-label {
+    color: var(--text-secondary);
+}
+#editor .ql-toolbar .ql-picker-item {
+    color: var(--text-secondary);
+}
+#editor .ql-toolbar .ql-active .ql-stroke {
+    stroke: var(--link-color);
+}
+#editor .ql-toolbar .ql-active .ql-fill {
+    fill: var(--link-color);
+}
+#editor .ql-toolbar .ql-picker-item:hover,
+#editor .ql-toolbar .ql-picker-item.ql-selected {
+    color: var(--link-color);
+}
+
+/* Editor container */
+#editor {
+    background: var(--bg-card);
+    border-radius: 0.25rem;
+}
+
+/* Editor content area */
+#editor .ql-container {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+}
+
+#editor .ql-editor {
+    color: var(--text-primary) !important;
+    background: var(--bg-card) !important;
+    min-height: 200px;
+    padding: 1rem;
+}
+
+/* Placeholder text */
+#editor .ql-editor.ql-blank::before {
+    color: var(--text-muted) !important;
+    font-style: italic;
+}
+
+/* Toolbar */
+#editor .ql-toolbar {
+    background: var(--bg-toolbar) !important;
+    border-color: var(--border-color) !important;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+/* Toolbar buttons and icons */
+#editor .ql-toolbar .ql-stroke {
+    stroke: var(--text-secondary) !important;
+}
+#editor .ql-toolbar .ql-fill {
+    fill: var(--text-secondary) !important;
+}
+#editor .ql-toolbar .ql-picker-label {
+    color: var(--text-secondary) !important;
+}
+#editor .ql-toolbar .ql-picker-item {
+    color: var(--text-secondary) !important;
+}
+#editor .ql-toolbar button:hover .ql-stroke,
+#editor .ql-toolbar button:focus .ql-stroke {
+    stroke: var(--link-color) !important;
+}
+#editor .ql-toolbar button:hover .ql-fill,
+#editor .ql-toolbar button:focus .ql-fill {
+    fill: var(--link-color) !important;
+}
+#editor .ql-toolbar .ql-active .ql-stroke {
+    stroke: var(--link-color) !important;
+}
+#editor .ql-toolbar .ql-active .ql-fill {
+    fill: var(--link-color) !important;
+}
+#editor .ql-toolbar .ql-picker-item:hover,
+#editor .ql-toolbar .ql-picker-item.ql-selected {
+    color: var(--link-color) !important;
+}
+
+/* Dropdown menus inside toolbar */
+#editor .ql-picker-options {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+#editor .ql-picker-options .ql-picker-item {
+    color: var(--text-secondary) !important;
+}
+#editor .ql-picker-options .ql-picker-item:hover,
+#editor .ql-picker-options .ql-picker-item.ql-selected {
+    color: var(--link-color) !important;
+    background: var(--bg-table-stripe) !important;
+}
+
+/* ----- Search Bar ----- */
+.form-control {
+    font-family: 'Merriweather', serif;
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.form-control:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 0.2rem rgba(61,90,128,0.15);
+}
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* Login form inputs */
+#loginForm {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+#loginForm .form-control {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+#loginForm .form-select {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+#loginForm .form-control:focus {
+    border-color: var(--link-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(61, 90, 128, 0.15) !important;
+}
+#loginForm .form-select:focus {
+    border-color: var(--link-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(61,90,128,0.15) !important;
+}
+#loginForm .form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* Buttons that use Bootstrap's btn-outline-secondary etc. */
+.btn-outline-secondary {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--text-secondary) !important;
+    color: var(--bg-body) !important;
+}
+
+/* Login button */
+#loginForm .btn-primary {
+    background-color: var(--btn-primary-bg) !important;
+    border-color: var(--btn-primary-bg) !important;
+}
+#loginForm .btn-primary:hover {
+    background-color: var(--btn-primary-hover) !important;
+    border-color: var(--btn-primary-hover) !important;
+}
+
+/* Override Bootstrap's .text-muted */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Specific for blog detail meta */
+article .text-muted,
+.blog-meta {
+    color: var(--text-muted) !important;
+}
+
+/* .like-btn {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+.like-btn:hover {
+    color: var(--link-color) !important;
+    border-color: var(--link-color) !important;
+}
+.like-btn.liked {
+    color: #dc3545 !important;
+    border-color: #dc3545 !important;
+} 
+.like-count {
+    color: var(--text-secondary) !important;
+} */
+
+/* Footer – ensure it uses our variables */
+footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    background-color: var(--bg-footer) !important;
+    color: var(--text-muted) !important;
+    border-top: 2px solid var(--border-color) !important;
+    font-size: 0.9rem;
+    padding: 2rem 0;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* List Group (used in admin categories) */
+.list-group-item {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+.list-group-item:hover {
+    background-color: var(--bg-table-stripe) !important;
+}
+
+/* Dropdown menus (used in admin header) */
+.dropdown-menu {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+.dropdown-item {
+    color: var(--text-secondary) !important;
+}
+.dropdown-item:hover {
+    background-color: var(--bg-table-stripe) !important;
+    color: var(--text-primary) !important;
+}
+.dropdown-divider {
+    border-top: 1px solid var(--border-color) !important;
+}
+
+/* Alerts (if any) */
+.alert {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Ensure the editor background is dark in dark mode */
+body.dark-mode #editor .ql-container,
+body.dark-mode #editor .ql-editor {
+    background: var(--bg-card) !important;
+}
+
+/* Make all cards in the same row equal height */
+#latestPosts .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card body grows to fill available space */
+#latestPosts .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card text grows to fill space */
+#latestPosts .card-text {
+    flex: 1 0 auto;
+}
+
+/* Consistent image sizing */
+#latestPosts .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Ensure "Read More" button stays at bottom */
+#latestPosts .card-body .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Card footer stays at bottom */
+#latestPosts .card-footer {
+    margin-top: auto;
+}
+
+/* Table header dark theme adapt */
+.table-dark {
+    --bs-table-bg: var(--bg-header);
+    --bs-table-color: var(--text-primary);
+    --bs-table-border-color: var(--border-color);
+}
+
+/* Table rows */
+.table-hover tbody tr:hover {
+    background-color: var(--bg-table-stripe) !important;
+}
+
+/* Actions buttons */
+.table .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.table .btn i {
+    font-size: 1rem;
+}
+
+/* Category table */
+#categoryList .btn i {
+    font-size: 1rem;
+}
+
+/* About Page */
+.about-page .author-photo {
+    border-radius: 8px; /* subtle rounded corners – adjust as needed */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+.about-page .author-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.about-page .bio-text p {
+    margin-bottom: 1rem;
+}
+.about-page .social-links .btn {
+    border-radius: 20px;
+    padding: 0.25rem 1.2rem;
+}
+
+/* Contact Page */
+.contact-form-wrapper {
+    background-color: var(--bg-card);
+}
+.contact-form-wrapper .form-control {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+.contact-form-wrapper .form-control:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 0.2rem rgba(61,90,128,0.15);
+}
+.contact-form-wrapper .form-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.contact-alternatives .btn {
+    border-radius: 20px;
+    padding: 0.3rem 1.5rem;
+}
+/* Placeholder text */
+.contact-form-wrapper .form-control::placeholder {
+    opacity: 0.7;
+}
+
+@media (max-width: 576px) {
+    .hero {
+        min-height: 180px;
+        padding: 1.5rem 1rem;
+        background-position: 50% center;
+        border-left-width: 3px;
+        border-radius: 0.3rem;
+        margin-bottom: 1.5rem;
+    }
+    #latestPosts .card-img-top {
+        height: 200px !important; /* keep the same */
+        object-fit: cover;
+    }
+    .table-responsive .table {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    .table-responsive .table td,
+    .table-responsive .table th {
+        padding: 0.4rem 0.3rem;
+        white-space: nowrap;
+    }
+    /* # column – smaller but visible */
+    .table-responsive .table th:first-child,
+    .table-responsive .table td:first-child {
+        /* display: none; */
+        width: 30px;
+        padding-right: 0.2rem;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+    /* Action buttons */
+    .table-responsive .table .btn {
+        padding: 0.15rem 0.35rem;
+        font-size: 0.75rem;
+    }
+    .table-responsive .table .btn i {
+        font-size: 0.85rem;
+    }
+    /* Status badge */
+    .table-responsive .table .badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+    /* Title column – allow wrapping */
+    .table-responsive .table td:nth-child(2) {
+        white-space: normal;
+        max-width: 120px;
+        word-break: break-word;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .table-responsive {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .table-responsive .table {
+        font-size: 0.85rem;
+        margin-bottom: 0;
+        width: 100%;
+        table-layout: fixed; /* Helps control column widths */
+    }
+    .table-responsive .table td,
+    .table-responsive .table th {
+        padding: 0.5rem 0.4rem;
+        white-space: nowrap;
+    }
+    /* Allow title column to wrap */
+    .table-responsive .table td:nth-child(2),
+    .table-responsive .table th:nth-child(2) {
+        white-space: normal;
+        max-width: 150px;
+        word-break: break-word;
+    }
+    /* Adjust status badge */
+    .table-responsive .table .badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+    /* Action buttons */
+    .table-responsive .table .btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    .table-responsive .table .btn i {
+        font-size: 0.85rem;
+    }
+    /* Ensure actions column stays right-aligned */
+    .table-responsive .table td:last-child,
+    .table-responsive .table th:last-child {
+        text-align: right !important;
+        white-space: nowrap;
+    }
+}
+
+/* On small screens, make search form full width */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 160px;
+        padding: 1.5rem 1rem;
+        background-position: 50% center;
+        border-left-width: 4px;
+    }
+    .navbar-brand { font-size: 1.4rem; }
+    article h1 { font-size: 2.2rem; }
+    .navbar .navbar-collapse {
+        padding-top: 0.5rem;
+    }
+    .navbar .navbar-collapse form {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    .navbar .navbar-collapse form .form-control {
+        flex: 1;
+        min-width: 100px;
+    }
+    .navbar .navbar-collapse .d-flex {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    .navbar .navbar-collapse .d-flex .dropdown,
+    .navbar .navbar-collapse .d-flex .btn {
+        width: auto;
+    }
+    /* Admin dropdown menu on mobile */
+    .navbar .dropdown-menu {
+        position: static !important;
+        width: 100%;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+    .search-form {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem;
+    }
+    .search-form .form-control {
+        flex: 1 !important;
+        min-width: 100px;
+    }
+    .auth-section {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 0.25rem;
+    }
+}
+
+/* Tablet (768px–991px) – keep items inline but reduce spacing */
+@media (min-width: 768px) and (max-width: 992px) {
+    .hero {
+        min-height: 200px;
+        padding: 2.5rem 2rem;
+        background-position: 60% center;
+        border-left-width: 5px;
+    }
+    .navbar .navbar-nav .nav-link {
+        padding: 0.5rem 0.7rem !important;
+        font-size: 0.9rem;
+    }
+    .navbar .form-control {
+        width: 120px !important;
+    }
+    .search-form .form-control {
+        width: 150px !important;
+        min-width: 120px;
+    }
+    .search-form {
+        margin-right: 0.75rem !important;
+    }
+}
+
+/* On desktop, ensure proper spacing between search and auth */
+@media (min-width: 992px) {
+    .hero {
+        min-height: 300px;
+    }
+    .search-form {
+        margin-right: 1.5rem !important;
+    }
+    .search-form .form-control {
+        width: 250px !important;
+        min-width: 180px;
+    }
+    .auth-section {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero {
+        min-height: 120px;
+        background-position: 50% center;
+        border-left-width: 3px;
+    }
+    .hero::before {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+/* ----- Very Small Screens (≤ 380px) ----- */
+@media (max-width: 380px) {
+    .hero {
+        min-height: 100px;
+        padding: 1.2rem 0.8rem;
+        background-position: 50% center;
+    }
+}

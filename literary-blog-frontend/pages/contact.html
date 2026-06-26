@@ -1,0 +1,110 @@
+<div class="contact-page">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Page Title -->
+            <h1 class="text-center mb-3">Get in Touch</h1>
+            <p class="text-center text-muted mb-4">
+                I'd love to hear from you - whether it's a question, a suggestion, or just a thought about my writing.
+            </p>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper mb-5 p-4 p-md-5 border rounded">
+                <form id="contactForm" action="https://formspree.io/f/mykqweor" method="POST">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="contactName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="contactName" name="name" placeholder="Enter your name" required>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="contactEmail" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="contactEmail" name="email" placeholder="you@example.com" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="contactSubject" name="subject" placeholder="What's this about?">
+                        </div>
+                        <div class="col-12">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                            <div class="invalid-feedback">Please write your message.</div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg w-100" id="submitBtn">Send Message</button>
+                        </div>
+                        <div id="formStatus" class="col-12 text-center mt-2"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Alternative Contact Methods -->
+            <div class="contact-alternatives text-center">
+                <p class="text-muted mb-2">Or reach me directly at:</p>
+                <p>
+                    <a href="mailto:kesavanselvi1969@gmail.com" class="btn btn-outline-primary me-2 mb-2">
+                        <i class="fas fa-envelope"></i> kesavan
+                    </a>
+                </p>
+                <!-- <div class="social-links mt-3">
+                    <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm me-2"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="https://www.instagram.com/kesavxn___/?__d=1%252F%252F" target="_blank" class="btn btn-outline-secondary btn-sm me-2"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="fab fa-linkedin"></i> Goodreads</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Prevent default validation messages and handle submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validate form
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            status.textContent = '';
+            status.className = '';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.textContent = '✅ Your message has been sent. Thank you!';
+                    status.className = 'success';
+                    form.reset();
+                } else {
+                    const error = await response.json();
+                    status.textContent = '❌ Oops! Something went wrong: ' + (error.error || 'Please try again.');
+                    status.className = 'error';
+                }
+            } catch (err) {
+                status.textContent = '❌ Network error. Please check your connection and try again.';
+                status.className = 'error';
+                console.error('Contact form error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
+    });
+</script>

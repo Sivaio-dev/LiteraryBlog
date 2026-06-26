@@ -1,0 +1,37 @@
+<h2 id="formTitle">Create New Post</h2>
+<form id="postForm">
+    <input type="hidden" id="editPostId" name="editPostId" value="">
+
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" id="postTitle" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cover Image URL</label>
+        <input type="text" class="form-control" id="postCoverImage" name="coverImage">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Upload Cover Image</label>
+        <input type="file" class="form-control" id="coverImageFile" accept="image/*">
+        <button type="button" class="btn btn-secondary mt-2" id="uploadCoverBtn">Upload</button>
+        <small class="text-muted d-block">Upload an image to Cloudinary. The URL will be filled automatically.</small>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Content</label>
+        <div id="editor" style="min-height:200px;"></div>
+        <input type="hidden" name="content" id="contentInput">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" id="postStatus" name="status">
+            <option value="DRAFT">Draft</option>
+            <option value="PUBLISHED" selected>Published</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Categories</label>
+        <div id="categoryCheckboxes"></div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="savePostBtn">Save</button>
+    <a class="btn btn-secondary" href="#/admin/posts">Cancel</a>
+</form>
