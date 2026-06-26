@@ -454,7 +454,7 @@ window.initPostForm = async function() {
                 formData.append('file', compressed);
 
                 const token = localStorage.getItem('jwtToken');
-                const res = await fetch('http://localhost:8080/api/admin/upload', {
+                const res = await fetch(`${api.API_BASE}/api/admin/upload`, {
                     method: 'POST',
                     headers: { 'Authorization': `Bearer ${token}` },
                     body: formData
