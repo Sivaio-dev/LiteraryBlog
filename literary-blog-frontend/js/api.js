@@ -116,7 +116,7 @@ export async function deletePost(id) {
         throw new Error('Unauthorized');
     }
     if (res.ok) {
-        alert("Post deleted");
+        // alert("Post deleted");
         loadAdminPosts();
     } else if (!res.ok) { throw new Error('Delete failed'); }
 }
