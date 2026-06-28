@@ -13,9 +13,35 @@ export function renderHeader() {
     return `
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler custom-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
+            <!-- Auth & Theme Toggle -->
+            <div class="d-flex align-items-center gap-2 ms-2 order-lg-2 auth-section">
+                ${isLoggedIn ? `
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Admin
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#/admin/dashboard">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="#/admin/posts">Manage Posts</a></li>
+                        <li><a class="dropdown-item" href="#/admin/categories">Categories</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                    </ul>
+                </div>
+                ` : `
+                <a class="btn btn-outline-primary" href="#/admin/login">Login</a>
+                `}
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas ${document.body.classList.contains('dark-mode') ? 'fa-sun' : 'fa-moon'}"></i>
+                </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="#/">Home</a></li>
@@ -28,28 +54,6 @@ export function renderHeader() {
                     <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <!-- Auth & Theme Toggle -->
-                <div class="d-flex align-items-center gap-2 auth-section">
-                    ${isLoggedIn ? `
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Admin
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#/admin/dashboard">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#/admin/posts">Manage Posts</a></li>
-                            <li><a class="dropdown-item" href="#/admin/categories">Categories</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
-                        </ul>
-                    </div>
-                    ` : `
-                    <a class="btn btn-outline-primary" href="#/admin/login">Login</a>
-                    `}
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <i class="fas ${document.body.classList.contains('dark-mode') ? 'fa-sun' : 'fa-moon'}"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
@@ -221,7 +225,7 @@ window.loadBlogDetail = async function(slug) {
             <div class="text-muted mb-3">
                 ${post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ''} by ${AUTHOR_NAME}
             </div>
-            ${post.coverImage ? `<img src="${post.coverImage}" class="img-fluid mb-4" alt="Cover">` : ''}
+            ${post.coverImage ? `<img src="${post.coverImage}" class="img-fluid mb-4" alt="Cover" loading="lazy">` : ''}
             <div>${post.content}</div>
             <div class="mt-3">
                 ${(post.categoryNames || []).map(c => `<span class="badge bg-info me-1">${c}</span>`).join('')}
@@ -234,30 +238,6 @@ window.loadBlogDetail = async function(slug) {
         container.innerHTML = '<p class="text-danger">Post not found.</p>';
     }
 };
-
-// Blog Detail with like
-/* window.initLikeButton = function() {
-    const likeBtn = document.getElementById('likeBtn');
-    const likeCount = document.getElementById('likeCount');
-    if (!likeBtn) return;
-    const postId = likeBtn.dataset.postId;
-    // Get initial status
-    api.getLikeStatus(postId).then(data => {
-        if (data.liked) likeBtn.classList.add('liked');
-        likeCount.textContent = data.count;
-    }).catch(console.error);
-
-    likeBtn.addEventListener('click', function() {
-        api.toggleLike(postId).then(data => {
-            likeCount.textContent = data.count;
-            if (data.liked) {
-                this.classList.add('liked');
-            } else {
-                this.classList.remove('liked');
-            }
-        }).catch(console.error);
-    });
-}; */
 
 // Search
 window.loadSearchResults = async function(query) {
