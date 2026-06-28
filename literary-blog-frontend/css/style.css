@@ -64,48 +64,74 @@ body.dark-mode {
     --blockquote-border: #8aa9c9;
 }
 
-/* Tamil font for articles/content */
-.tamil-text,
-article .tamil-content {
-    font-family: 'Noto Sans Tamil', 'Mukta', sans-serif;
+/* Dark mode fixes for mobile navbar collapse */
+body.dark-mode .navbar-collapse {
+    background-color: var(--bg-header) !important;
+    border-color: var(--border-color);
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    font-family: 'Merriweather', 'Georgia','Noto Sans Tamil', serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    transition: background-color 0.3s ease, color 0.3s ease;
+body.dark-mode .navbar-collapse .nav-link {
+    color: var(--text-secondary) !important;
+}
+body.dark-mode .navbar-collapse .nav-link:hover {
+    color: var(--link-color) !important;
 }
 
-main {
-    flex: 1 0 auto;
+body.dark-mode .navbar-collapse .search-form .form-control {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
+body.dark-mode .navbar-collapse .search-form .form-control::placeholder {
+    color: var(--text-muted) !important;
 }
 
-/* Use a consistent font hierarchy */
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; }
-h3 { font-size: 1.6rem; }
-
-a {
-    color: var(--link-color);
-    text-decoration: none;
-    transition: color 0.2s;
+body.dark-mode .navbar-collapse .btn-outline-success {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
 }
-a:hover {
-    color: var(--link-hover);
-    text-decoration: underline;
+body.dark-mode .navbar-collapse .btn-outline-success:hover {
+    background-color: var(--link-color) !important;
+    color: #fff !important;
+}
+
+/* Mobile auth buttons inside collapse */
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-primary {
+    color: var(--link-color) !important;
+    border-color: var(--link-color) !important;
+}
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-primary:hover {
+    background-color: var(--link-color) !important;
+    color: #fff !important;
+}
+
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-secondary {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-secondary:hover {
+    background-color: var(--text-secondary) !important;
+    color: var(--bg-body) !important;
+}
+
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-danger {
+    color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+body.dark-mode .navbar-collapse .d-md-none .btn-outline-danger:hover {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+/* Hamburger icon - visible in dark mode */
+body.dark-mode .navbar-toggler-icon {
+    filter: invert(1) brightness(200%) !important;
+}
+
+/* Ensure the toggler button has a visible border in dark mode */
+body.dark-mode .navbar-toggler {
+    border-color: var(--border-color) !important;
 }
 
 /* Status dropdown (form-select) */
@@ -169,6 +195,66 @@ body.dark-mode .table tbody tr:hover {
     background-color: var(--bg-table-stripe) !important;
 }
 
+body.dark-mode #togglePasswordBtn {
+    background-color: var(--bg-input);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+body.dark-mode #togglePasswordBtn:hover {
+    background-color: var(--bg-table-stripe);
+    color: var(--link-color);
+}
+
+/* Ensure the editor background is dark in dark mode */
+body.dark-mode #editor .ql-container,
+body.dark-mode #editor .ql-editor {
+    background: var(--bg-card) !important;
+}
+
+/* Tamil font for articles/content */
+.tamil-text,
+article .tamil-content {
+    font-family: 'Noto Sans Tamil', 'Mukta', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: 'Merriweather', 'Georgia','Noto Sans Tamil', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+/* Use a consistent font hierarchy */
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.6rem; }
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
 /* Password toggle button */
 #togglePasswordBtn {
     border-left: none;
@@ -180,15 +266,6 @@ body.dark-mode .table tbody tr:hover {
     background-color: var(--bg-table-stripe);
     color: var(--link-color);
 }
-body.dark-mode #togglePasswordBtn {
-    background-color: var(--bg-input);
-    color: var(--text-secondary);
-    border-color: var(--border-color);
-}
-body.dark-mode #togglePasswordBtn:hover {
-    background-color: var(--bg-table-stripe);
-    color: var(--link-color);
-}
 
 .navbar {
     background-color: var(--bg-header) !important;
@@ -196,16 +273,12 @@ body.dark-mode #togglePasswordBtn:hover {
     padding: 0.8rem 1rem;
     transition: background-color 0.3s, border-color 0.3s;
 }
-.navbar-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-primary) !important;
-    letter-spacing: -0.02em;
+.navbar-collapse {
+    transition: background-color 0.3s;
+    padding: 0.5rem 1rem;
 }
-.navbar-brand:hover {
-    color: var(--link-color) !important;
-    text-decoration: none;
+.navbar .order-lg-2 {
+    order: 2;
 }
 .nav-link {
     font-family: 'Merriweather', serif;
@@ -229,8 +302,76 @@ body.dark-mode #togglePasswordBtn:hover {
 .navbar-toggler-icon {
     filter: var(--toggler-icon-filter, none);
 }
-body.dark-mode .navbar-toggler-icon {
-    --toggler-icon-filter: invert(1);
+
+.custom-toggler {
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.custom-toggler span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.custom-toggler[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.custom-toggler[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+.custom-toggler[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+.navbar-toggler::after,
+.navbar-toggler-icon {
+    display: none;
+}
+/* Remove focus outline/box-shadow from hamburger toggle */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+/* Fix: Admin dropdown without affecting navbar layout */
+.navbar .dropdown {
+    position: relative;
+    flex-shrink: 0; /* prevents shrinking */
+}
+.navbar .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: auto !important;
+    right: 0 !important;
+    z-index: 1050;
+    min-width: 200px;
+    margin-top: 0.25rem;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+.navbar .dropdown-menu .dropdown-item {
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: var(--bg-table-stripe);
+    color: var(--text-primary);
+}
+.navbar .dropdown-menu .dropdown-divider {
+    border-top-color: var(--border-color);
 }
 
 /* Dark mode toggle button */
@@ -325,7 +466,6 @@ body.dark-mode .navbar-toggler-icon {
     justify-content: center;
     margin-bottom: 2rem;
     border-radius: 0.5rem;
-    /* border-left: 6px solid var(--hero-border-left); */
     background: url('/assets/images/cover.jpg') no-repeat center center / cover;
     background-position: 68% center;
     transition: border-color 0.3s;
@@ -490,7 +630,6 @@ article blockquote {
     font-family: 'Merriweather', serif;
     font-size: 1rem;
 }
-
 #editor .ql-editor {
     color: var(--text-primary) !important;
     background: var(--bg-card) !important;
@@ -636,22 +775,6 @@ article .text-muted,
     color: var(--text-muted) !important;
 }
 
-/* .like-btn {
-    color: var(--text-secondary) !important;
-    border-color: var(--border-color) !important;
-}
-.like-btn:hover {
-    color: var(--link-color) !important;
-    border-color: var(--link-color) !important;
-}
-.like-btn.liked {
-    color: #dc3545 !important;
-    border-color: #dc3545 !important;
-} 
-.like-count {
-    color: var(--text-secondary) !important;
-} */
-
 /* Footer – ensure it uses our variables */
 footer {
     flex-shrink: 0;
@@ -695,12 +818,6 @@ footer {
     background-color: var(--bg-card) !important;
     color: var(--text-primary) !important;
     border-color: var(--border-color) !important;
-}
-
-/* Ensure the editor background is dark in dark mode */
-body.dark-mode #editor .ql-container,
-body.dark-mode #editor .ql-editor {
-    background: var(--bg-card) !important;
 }
 
 /* Make all cards in the same row equal height */
@@ -918,10 +1035,34 @@ body.dark-mode #editor .ql-editor {
         background-position: 50% center;
         border-left-width: 4px;
     }
-    .navbar-brand { font-size: 1.4rem; }
+    .navbar {
+        position: relative;
+    }
+    .navbar .order-lg-2 {
+        order: 2;
+        margin-left: auto !important;
+    }
     article h1 { font-size: 2.2rem; }
     .navbar .navbar-collapse {
-        padding-top: 0.5rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bs-body-bg);
+        z-index: 1000;
+    }
+    .navbar .navbar-collapse .search-form {
+        width: 100% !important;
+        margin: 0.5rem 0 !important;
+        padding: 0 0.5rem;
+    }
+    .navbar .navbar-collapse .search-form .form-control {
+        flex: 1;
+        min-width: 100px;
+        width: 100% !important;
+    }
+    .navbar .navbar-collapse .search-form .btn {
+        flex-shrink: 0;
     }
     .navbar .navbar-collapse form {
         width: 100%;
@@ -944,7 +1085,7 @@ body.dark-mode #editor .ql-editor {
     }
     /* Admin dropdown menu on mobile */
     .navbar .dropdown-menu {
-        position: static !important;
+        position: static;
         width: 100%;
         box-shadow: none;
         border: 1px solid var(--border-color);
@@ -959,8 +1100,7 @@ body.dark-mode #editor .ql-editor {
         min-width: 100px;
     }
     .auth-section {
-        width: 100%;
-        justify-content: center;
+        justify-content: right;
         flex-wrap: wrap;
         margin-top: 0.25rem;
     }
