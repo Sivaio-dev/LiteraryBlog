@@ -94,7 +94,7 @@ public class PostService {
         post.setCategories(categories);
 
         Post saved = postRepository.save(post);
-        System.out.println("🔍 Entering createPost – status=" + dto.getStatus());
+        System.out.println("🔍 Saved post: id=" + saved.getId() + ", status=" + saved.getStatus() + ", slug=" + saved.getSlug());
         if (saved.getStatus() == PostStatus.PUBLISHED && saved.getSlug() != null && !saved.getSlug().isEmpty()) {
             System.out.println("✅ Condition passed – sending notification");
             notificationService.sendNewPostNotification(saved.getTitle(), saved.getSlug());
@@ -115,8 +115,10 @@ public class PostService {
         post.setSlug(generateUniqueSlug(dto.getTitle()));
         post.setContent(dto.getContent());
         post.setCoverImage(dto.getCoverImage());
+        System.out.println("🔍 Before update: status=" + post.getStatus() + ", new status=" + dto.getStatus());
         if (dto.getStatus() == PostStatus.PUBLISHED && post.getStatus() != PostStatus.PUBLISHED) {
             post.setPublishedAt(LocalDateTime.now());
+            System.out.println("✅ Status changed to PUBLISHED – sending notification");
             notificationService.sendNewPostNotification(post.getTitle(), post.getSlug());
         }
         post.setStatus(dto.getStatus());
