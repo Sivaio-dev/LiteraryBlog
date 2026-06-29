@@ -32,6 +32,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
     private final LikeRepository likeRepository;
+    private NotificationService notificationService;
 
     private PostResponseDTO convertToDTO(Post post) {
         try {
@@ -93,6 +94,12 @@ public class PostService {
         post.setCategories(categories);
 
         Post saved = postRepository.save(post);
+        if (saved.getStatus() == PostStatus.PUBLISHED && saved.getSlug() != null && !saved.getSlug().isEmpty()) {
+            notificationService.sendNewPostNotification(
+                    saved.getTitle(),
+                    saved.getSlug()
+            );
+        }
         // Reload with categories
         Post loaded = postRepository.findById(saved.getId()).orElse(saved);
         return convertToDTO(loaded);
@@ -109,6 +116,7 @@ public class PostService {
         post.setCoverImage(dto.getCoverImage());
         if (dto.getStatus() == PostStatus.PUBLISHED && post.getStatus() != PostStatus.PUBLISHED) {
             post.setPublishedAt(LocalDateTime.now());
+            notificationService.sendNewPostNotification(post.getTitle(), post.getSlug());
         }
         post.setStatus(dto.getStatus());
 
