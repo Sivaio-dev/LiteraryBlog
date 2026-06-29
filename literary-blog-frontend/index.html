@@ -47,6 +47,31 @@
     <!-- Footer -->
     <div id="footer"></div>
 
+    <!-- OneSignal Web Push -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+            appId: "cf090f76-245c-4152-b335-cf14d17d155e",
+            safari_web_id: "web.onesignal.auto.639febc2-a356-4a97-8e69-81281557724a",
+            notifyButton: {
+                enable: true,
+                position: 'bottom-right',
+                    theme: 'default',
+                    size: 'medium',
+                    showCredit: false,
+                    text: {
+                        'tip.state.unsubscribed': 'Subscribe to notifications',
+                        'tip.state.subscribed': 'You\'re subscribed to notifications',
+                        'tip.state.blocked': 'You\'ve blocked notifications',
+                        'message.premission': 'We\'ll send you updates when new posts are published.',
+                    },
+                },
+            });
+        });
+    </script>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
