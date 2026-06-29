@@ -32,7 +32,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
     private final LikeRepository likeRepository;
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
     private PostResponseDTO convertToDTO(Post post) {
         try {
