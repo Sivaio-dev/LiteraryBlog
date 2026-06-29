@@ -94,11 +94,12 @@ public class PostService {
         post.setCategories(categories);
 
         Post saved = postRepository.save(post);
+        System.out.println("🔍 Entering createPost – status=" + dto.getStatus());
         if (saved.getStatus() == PostStatus.PUBLISHED && saved.getSlug() != null && !saved.getSlug().isEmpty()) {
-            notificationService.sendNewPostNotification(
-                    saved.getTitle(),
-                    saved.getSlug()
-            );
+            System.out.println("✅ Condition passed – sending notification");
+            notificationService.sendNewPostNotification(saved.getTitle(), saved.getSlug());
+        } else {
+            System.out.println("❌ Condition failed – status=" + saved.getStatus() + ", slug=" + saved.getSlug());
         }
         // Reload with categories
         Post loaded = postRepository.findById(saved.getId()).orElse(saved);
